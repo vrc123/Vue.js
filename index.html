@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <h1>Vue.js aflevering</h1>
+    <div id="vue_1">
+        <div id="input">
+            <label for="two_way">Navn: </label>
+            <input type="text" id="two_way" v-model="name">
+        </div>
+        <h2>Hvem spiller på trommesættet? Det gør: {{ name }}</h2>
+        <div class="buttons">
+            <div v-for="item, index in buttons">
+                <button v-on:click="sound(index)" v-bind:class="item.class" v-html="item.image"></button>
+            </div>
+        </div>
+    </div>
+    <div id="vue_2">
+        <form>
+            <h2>Sign up</h2>
+            <div class="input">
+                <label for="name">Navn: </label>
+                <input type="text" id="name" v-model="name">
+            </div>
+            <div class="input">
+                <label for="email">Email: </label>
+                <input type="text" id="email" v-model="email">
+            </div>
+            <div class="input">
+                <label for="password">Password: </label>
+                <input type="text" id="password" v-model="password">
+            </div>
+            <div class="input">
+                <label for="passwordrepeat">Gentag dit password: </label>
+                <input type="text" id="passwordrepeat" v-model="passwordrepeat">
+            </div>
+            <div class="input">
+                <label for="phone">Telefonnummer: </label>
+                <input type="text" id="phone" v-model="phone">
+            </div>
+            <div class="input">
+                <label for="address">Adresse: </label>
+                <input type="text" id="address" v-model="address">
+            </div>
+            <div class="input">
+                <label for="zipcode">Postnummer: </label>
+                <input type="text" id="zipcode" v-model="zipcode">
+            </div>
+            <button v-on:click.prevent="submit()">Sign up</button>
+        </form>
+        <div id="warning" v-if="errors.length > 0">
+            <p v-for="error in errors">{{error}}</p>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
